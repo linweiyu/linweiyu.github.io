@@ -69,7 +69,7 @@ gitalk:
   clientSecret: 3ae44ebfb478249c84ab0f49a695a32e279f025c
   repo: linweiyu.github.io
   owner: linweiyu
-redirect_uri_mismatch&error_description=The+redirect_uri+MUST+match+the+registered+callback+URL+for+this+application.&error_uri=https%3A%2F%2Fdeveloper.github.com%2Fapps%2Fmanaging-oauth-apps%2Ftroubleshooting-authorization-request-errors%2F%23redirect-uri-mismatch
+  
 # 输入Google Analytics web tracking code
 google_analytics:
 
