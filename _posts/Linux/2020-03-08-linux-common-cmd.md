@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Linux常用命令(长期更新)
-date: 2020-03-08
+date: 2020-03-10
 author: linweiyu
 tags: [Linux]
 comments: true
@@ -49,6 +49,104 @@ export SPARK_DAEMON_JAVA_OPTS="-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.dep
 ```shell
 netstat -tunlp|grep port
 lsof -i
-ps -aux |grep pid
 ```
 
+### netstat
+
+-a 列出所有链接
+
+-t 只列出tcp协议的链接 -u 只列出UDP协议的链接
+
+-n 禁用反向域名解析，加快查询速度
+
+-l 只列出监听中的链接（后台进程打开的端口）
+
+-p 获取进程名，进程号和进程id
+
+-s 打印网络统计数据
+
+-r 打印内核路由信息
+
+-i 打印网络接口 该项输出信息和ifconfig一致
+
+-c 持续输出信息
+
+example
+
+```
+#监听处于active状态的连接
+netstat -atnp | grep ESTABLISHED
+watch -d -n0 "netstat -atnp | grep ESTABLISHED"
+```
+
+
+
+### ps
+
+列出所有正在运行的进程
+
+```
+ps -aux 
+```
+
+列举所有进程且显示完整命令字符
+
+```
+ps -auxww
+```
+
+
+
+## find
+
+1. 选择搜索路径的起点
+
+2. 搜索策略
+
+   -name 按名称搜索文件 （支持模糊匹配 * （需加单引号或双引号））
+
+   -ls 使搜索结果带有文件的详细信息例如长度权限等
+
+   -size 按文件大小来搜索 支持k, M, G 等 
+
+   ```shell
+   查找大于1G的文件
+   find / -size +1G
+   ```
+
+   -inum 通过索引节点查找文件
+
+   -user -group 查找文件所有者或组的文件 
+
+   -nouser -nogroup查找没有所有者或组的文件
+
+   -mtime 按上次更新时间查找
+
+   ```shell
+   查找过去24小时更新的文件 （若未指定unit 默认为24小时）
+   find / -mtime -1
+   ```
+
+   -ctime 查询上次修改过文件状态的文件(同上时间单位默认为24小时)
+
+   -atime 查询上次访问过文件(同上时间单位默认为24小时)
+
+   -newer 查询比某文件更新的文件  !newer为更旧
+
+   -type 按文件类型查找文件 例如 d:目录 f: 常规文件 l:符号链接
+
+   -maxdepth -mindepth 限制查找的深度
+
+   -empty 查找空文件
+
+   -perm 按权限查找文件
+
+   ```shell
+   find / -perm 666 -type f -ls
+   ```
+
+   -exec -ok(会在每个文件操作前做确认)对查找到的文件执行其他命令
+
+   ```shell
+   find . -name test -exec rm {} \;
+   ```
