@@ -12,7 +12,7 @@ pinned: true
 
 # Linux常用命令
 
-## 配置免密登录
+## 配置SSH免密登录
 
 ```shell
   $ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
@@ -150,3 +150,21 @@ ps -auxww
    ```shell
    find . -name test -exec rm {} \;
    ```
+
+## Java相关
+
+### jps
+
+-q 列出所有JVM进程的pid
+
+-m 列出全部JVM进程的参数
+
+-l 列出所有进程的完整的包名称
+
+-v 列出所有JVM进程的JVM参数
+
+### jstack
+
+jstack {pid} 为java进程中的所有线程打印Java堆栈跟踪
+
+jstack -m {pid} 为java进程中的所有线程打印混合代码的（Java/C++）堆栈跟踪
