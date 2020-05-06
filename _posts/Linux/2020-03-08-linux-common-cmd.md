@@ -150,3 +150,6 @@ ps -auxww
    ```shell
    find . -name test -exec rm {} \;
    ```
+
+
+   
