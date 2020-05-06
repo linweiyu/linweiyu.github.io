@@ -6,7 +6,6 @@ author: linweiyu
 tags: [SVN,GIT]
 comments: true
 toc: true
-pinned: true
 
 ---
 
