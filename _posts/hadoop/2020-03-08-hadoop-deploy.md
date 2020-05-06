@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: Hadoop 部署
 date: 2020-03-08
@@ -58,7 +59,15 @@ etc/hadoop/hdfs-site.xml:
      $ sbin/start-dfs.sh
    ```
 
-lsof -i |grep java  可通过该方式找到管理页面端口
+可通过该方式找到管理界面端口
+
+```shell
+lsof -i |grep java 
+```
+
+ 
+
+
 
 
 
