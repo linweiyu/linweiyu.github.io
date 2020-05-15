@@ -151,6 +151,8 @@ ps -auxww
    find . -name test -exec rm {} \;
    ```
 
+
+
 ## Java相关
 
 ### jps
@@ -168,3 +170,11 @@ ps -auxww
 jstack {pid} 为java进程中的所有线程打印Java堆栈跟踪
 
 jstack -m {pid} 为java进程中的所有线程打印混合代码的（Java/C++）堆栈跟踪
+
+
+
+MD5
+
+Linux: md5sum [filename]
+
+windows: Get-FileHash C:\Windows\notepad.exe -Algorithm MD5| Format-List （SHA1、SHA256、SHA384、SHA512、MACTripleDES、MD5、RIPEMD160）
