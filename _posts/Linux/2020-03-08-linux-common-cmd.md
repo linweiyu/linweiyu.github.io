@@ -6,7 +6,6 @@ author: linweiyu
 tags: [Linux]
 comments: true
 toc: true
-pinned: true
 
 ---
 
@@ -173,8 +172,89 @@ jstack -m {pid} 为java进程中的所有线程打印混合代码的（Java/C++�
 
 
 
-MD5
+## MD5
 
 Linux: md5sum [filename]
 
 windows: Get-FileHash C:\Windows\notepad.exe -Algorithm MD5| Format-List （SHA1、SHA256、SHA384、SHA512、MACTripleDES、MD5、RIPEMD160）
+
+
+
+## TOP
+
+version
+
+```
+top -v
+```
+
+Process State
+
+- Runnable (R): A process in this state is either executing on the CPU, or it is present on the run queue, ready to be executed.
+- Interruptible sleep (S): Processes in this state are waiting for an event to complete.
+- Uninterruptible sleep (D): In this case, a process is waiting for an I/O operation to complete.
+- Stopped (T): These processes have been stopped by a [job control signal](https://www.gnu.org/software/libc/manual/html_node/Job-Control-Signals.html) (such as by pressing Ctrl+Z) or because they are being traced.
+- Zombie (Z): The kernel maintains various data structures in memory to keep track of processes. A process may create a number of child processes, and they may exit while the parent is still around. However, these data structures must be kept around until the parent obtains the status of the child processes. Such terminated processes whose data structures are still around are called zombies.
+
+CPU usage
+
+`us` the time the CPU spends executing processes in userspace
+
+`sy` the time spent on running kernelspace processes
+
+`ni` nice value, priority in CPU
+
+load average
+
+represents the average “load” over one, five and fifteen minutes.
+
+PID
+
+This is the process ID, a unique positive integer that identifies a process.
+
+USER
+
+This is the “effective” username (which maps to a user ID) of the user who started the process. Linux assigns a real user ID and an effective user ID to processes; the latter allows a process to act on behalf of another user. (For example, a non-root user can elevate to root in order to install a package.)
+
+PR and NI
+
+The “NI” field shows the “nice” value of a process. The “PR” field shows the scheduling priority of the process from the perspective of the kernel. The nice value affects the priority of a process.
+
+VIRT, RES, SHR and %MEM
+
+These three fields are related with to memory consumption of the processes. “VIRT” is the total amount of memory consumed by a process. This includes the program’s code, the data stored by the process in memory, as well as any regions of memory that have been swapped to the disk. “RES” is the memory consumed by the process in RAM, and “%MEM” expresses this value as a percentage of the total RAM available. Finally, “SHR” is the amount of memory shared with other processes.
+
+kill process
+
+'k' -> enter process id -> enter signal(SIGTERM(15:  allows processes to terminate gracefully); SIGKILL(9:kill a process forcefully))
+
+sort 
+
+- ‘M’ to sort by memory usage
+
+- ‘P’ to sort by CPU usage
+
+- ‘N’ to sort by process ID
+
+- ‘T’ to sort by the running time
+
+- or 
+
+  ```
+  top -o %CPU
+  ```
+
+show threads
+
+'H' or top -H 
+
+show full path
+
+'c' or top -c
+
+## 时间校对
+
+```
+ntpdate cn.pool.ntp.org
+```
+cn.pool.ntp.org是ntp网络授时组织的中国授时源
