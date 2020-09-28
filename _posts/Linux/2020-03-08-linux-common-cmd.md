@@ -31,6 +31,14 @@ export SPARK_MASTER_HOST=10.10.86.236
 export SPARK_DAEMON_JAVA_OPTS="-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=10.0.83.99:2181,10.10.86.236:2181,10.10.86.237:2181 -Dspark.deploy.zookeeper.dir=/home/spark/spark"
 ```
 
+```
+-- 自动清理work目录
+export SPARK_WORKER_OPTS="
+-Dspark.worker.cleanup.enabled=true  # 是否开启自动清理
+-Dspark.worker.cleanup.interval=1800  # 清理周期，每隔多长时间清理一次，单位秒
+-Dspark.worker.cleanup.appDataTtl=3600"  # 保留最近多长时间的数据
+```
+
 ### 启动从节点
 
 ```shell
